@@ -3,7 +3,6 @@ package quaks.by.ntmcore.commands;
 import github.scarsz.discordsrv.DiscordSRV;
 import github.scarsz.discordsrv.dependencies.jda.api.EmbedBuilder;
 import github.scarsz.discordsrv.dependencies.jda.api.entities.MessageEmbed;
-import github.scarsz.discordsrv.util.DiscordUtil;
 import github.scarsz.discordsrv.util.WebhookUtil;
 import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.*;
@@ -14,7 +13,6 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import quaks.by.ntmcore.NTMcore;
 import quaks.by.ntmcore.utils.ChatUtils;
 
 import java.awt.Color;

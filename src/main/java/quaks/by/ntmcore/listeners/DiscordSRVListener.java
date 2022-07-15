@@ -1,25 +1,17 @@
 package quaks.by.ntmcore.listeners;
 
 import github.scarsz.discordsrv.DiscordSRV;
-import github.scarsz.discordsrv.api.ListenerPriority;
 import github.scarsz.discordsrv.api.Subscribe;
 import github.scarsz.discordsrv.api.events.*;
 import github.scarsz.discordsrv.dependencies.emoji.EmojiParser;
-import github.scarsz.discordsrv.dependencies.jda.api.entities.Emoji;
-import github.scarsz.discordsrv.dependencies.jda.api.interactions.components.Button;
 import github.scarsz.discordsrv.util.DiscordUtil;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import quaks.by.ntmcore.utils.ChatUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static quaks.by.ntmcore.utils.ChatUtils.removeUrl;
 import static quaks.by.ntmcore.utils.ChatUtils.unSpaced;
 
 public class DiscordSRVListener {

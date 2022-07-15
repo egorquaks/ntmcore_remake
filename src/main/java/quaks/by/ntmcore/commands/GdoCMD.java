@@ -10,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import quaks.by.ntmcore.files.MuteList;
 import quaks.by.ntmcore.utils.ChatUtils;
 
 import java.util.Collections;
