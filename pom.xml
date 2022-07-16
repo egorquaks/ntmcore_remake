@@ -41,7 +41,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>E:\NTMproject\Server\plugins\NTM2.jar</outputFile>
+                            <outputFile>D:\.ntm_project\Server\plugins\NTM2.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
