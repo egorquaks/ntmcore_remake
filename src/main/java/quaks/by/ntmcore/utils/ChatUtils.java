@@ -158,7 +158,33 @@ public class ChatUtils {
         result.addExtra(urls);
         return result;
     }
-    private static void insertPrefix(String name, TextComponent result){
+    public static TextComponent genTryMessage(String name, String message, ChatColor nameColor, boolean global, String rand){
+        TextComponent urls = getUrls(message);
+        message = unSpaced(removeUrl(message));
+        TextComponent message1 = new TextComponent(message);
+        TextComponent dot = new TextComponent("• ");
+        dot.setColor(ChatColor.GRAY);
+        TextComponent Tname = new TextComponent(name+" ");
+        Tname.setColor(nameColor);
+        Tname.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder("Написать "+name).color(ChatColor.GRAY).create()));
+        Tname.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tell "+name));
+        TextComponent result = new TextComponent();
+        result.addExtra(dot);
+        insertPrefix(name,result);
+        result.addExtra(Tname);
+        if(global){
+            message1.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Выполнить /gme").color(ChatColor.GRAY).create()));
+            message1.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/gme "));
+        }else{
+            message1.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Выполнить /me").color(ChatColor.GRAY).create()));
+            message1.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/me "));
+        }
+        result.addExtra(message1);
+        result.addExtra(urls);
+        result.addExtra(new TextComponent(" "+rand));
+        return result;
+    }
+    public static void insertPrefix(String name, TextComponent result){
         if(DiscordSRV.getPlugin().getAccountLinkManager().getDiscordId(Bukkit.getOfflinePlayer(name).getUniqueId())!=null){
             if(RoleManager.ADMINISTRATOR.isMe(name)){
                 TextComponent prefix = new TextComponent(RoleManager.ADMINISTRATOR.getPrefix());
@@ -219,16 +245,20 @@ public class ChatUtils {
         return message.equals("");
     }
     public static boolean isMuted(String name){
-        Date buf = new Date();
-        if(MuteList.get().get(name+".mute_date")==null){return false;}
-        if(buf.after((Date) MuteList.get().get(name+".mute_date"))){
-            MuteList.get().set(name+".muted",false);
-            MuteList.save();
-            DiscordUtil.removeRolesFromMember(DiscordUtil.getMemberById(DiscordSRV.getPlugin().getAccountLinkManager().getDiscordId(Bukkit.getOfflinePlayer(name).getUniqueId())),DiscordUtil.getRole(RoleList.get().getString("mute")));
-            return false;
-        }else{
-            return true;
-        }
+        if(MuteList.get().getBoolean(name+".muted")){
+            Date buf = new Date();
+            if (MuteList.get().get(name + ".mute_date") == null) {
+                return false;
+            }
+            if (buf.after((Date) MuteList.get().get(name + ".mute_date"))) {
+                MuteList.get().set(name + ".muted", false);
+                MuteList.save();
+                DiscordUtil.removeRolesFromMember(DiscordUtil.getMemberById(DiscordSRV.getPlugin().getAccountLinkManager().getDiscordId(Bukkit.getOfflinePlayer(name).getUniqueId())), DiscordUtil.getRole(RoleList.get().getString("mute")));
+                return false;
+            } else {
+                return true;
+            }
+        }else {return false;}
     }
     public static String removeUrl(String commentstr) {
         // rid of ? and & in urls since replaceAll can't deal with them

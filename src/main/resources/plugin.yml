@@ -80,3 +80,9 @@ commands:
   freeze:
     description: Заморозить человека
     usage: /freeze
+  try:
+    description: тру
+    usage: /try
+  gtry:
+    description: шо треш
+    usage: /gtry
