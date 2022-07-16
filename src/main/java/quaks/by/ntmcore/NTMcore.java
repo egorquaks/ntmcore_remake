@@ -67,6 +67,8 @@ public final class NTMcore extends JavaPlugin {
         getCommand("ignore").setExecutor(new IgnoreCMD());
         getCommand("god").setExecutor(new GodCMD());
         getCommand("freeze").setExecutor(new FreezeCMD());
+        getCommand("try").setExecutor(new TryCMD());
+        getCommand("gtry").setExecutor(new GtryCMD());
 
         DiscordSRV.api.subscribe(discordsrvListener); // Подсос к прослушиванию Discord
 
@@ -85,7 +87,7 @@ public final class NTMcore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new NameTagHideListener(), this);
         getServer().getPluginManager().registerEvents(new ClickOnPlayerEventListener(), this);
         getServer().getPluginManager().registerEvents(new DeathListener(), this);
-
+        getServer().getPluginManager().registerEvents(new NameTagHideListener(), this);
 
         getLogger().info("NTM - Основной плагин запущен");
     } // onEnable выполняется когда, запускается плагин
