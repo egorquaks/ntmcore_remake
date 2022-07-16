@@ -28,6 +28,7 @@ public class WhisperCMD implements CommandExecutor, TabExecutor {
             TextComponent msg = new TextComponent(String.join(" ", args));
             msg.setHoverEvent(null);
             TextComponent result = new TextComponent();
+            ChatUtils.insertPrefix(sender.getName(),result);
             result.addExtra(base);
             result.addExtra(msg);
             ChatUtils.sendLocalMessage(result,p,5
