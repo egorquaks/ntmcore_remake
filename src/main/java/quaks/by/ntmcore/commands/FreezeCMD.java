@@ -16,6 +16,7 @@ import static quaks.by.ntmcore.NTMcore.freeze_team;
 public class FreezeCMD implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if(args.length==0){return true;}
         TextComponent suggest = new TextComponent("[Разморозить]");
         suggest.setColor(ChatColor.GRAY);
         suggest.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,new ComponentBuilder("Разморозить")

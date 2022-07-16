@@ -41,8 +41,10 @@ public class SpectatorCMD implements CommandExecutor, TabExecutor {
                         player.sendMessage(ChatColor.RED+"Игрок оффлайн");
                         break;
                     }
+                    if(SpectatorHistory.get().get(player.getName()+".pos")==null){
                         SpectatorHistory.get().set(player.getName() + ".pos", player.getLocation());
                         SpectatorHistory.save();
+                    }
                         player.setGameMode(GameMode.SPECTATOR);
                     player.teleport(target.getLocation());
                     break;
